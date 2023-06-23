@@ -1,44 +1,24 @@
 # Simple Docker
 
-> При старте работы над проектом просим вас постараться хронометрировать время работы над проектом.
-> По завершении работы над проектом просим вас ответить на два вопроса [в этом опросе](https://forms.gle/6qcQSqdQnf7JD1iEA)
-
 Introduction to docker. Developing a simple docker image for your own server.
-
 The russian version of the task can be found in the repository.
 
 ## Contents
 
 1. [Chapter I](#chapter-i)
+    1.1. [nginx](#nginx) \
+    1.2. [Docker](#docker) \
+    1.3. [Dockle](#dockle)
 2. [Chapter II](#chapter-ii) \
-    2.1. [nginx](#nginx) \
-    2.2. [Docker](#docker) \
-    2.3. [Dockle](#dockle)
-3. [Chapter III](#chapter-iii) \
-    3.1. [Ready-made docker](#part-1-ready-made-docker) \
-    3.2. [Operations with container](#part-2-operations-with-container) \
-    3.3. [Mini web server](#part-3-mini-web-server) \
-    3.4. [Your own docker](#part-4-your-own-docker) \
-    3.5. [Dockle](#part-5-dockle) \
-    3.6. [Basic Docker Compose](#part-6-basic-docker-compose)
+    2.1. [Ready-made docker](#part-1-ready-made-docker) \
+    2.2. [Operations with container](#part-2-operations-with-container) \
+    2.3. [Mini web server](#part-3-mini-web-server) \
+    2.4. [Your own docker](#part-4-your-own-docker) \
+    2.5. [Dockle](#part-5-dockle) \
+    2.6. [Basic Docker Compose](#part-6-basic-docker-compose)
 
 
 ## Chapter I
-
-![simple_docker](misc/images/simple_docker.png)
-
-Planet Earth, Atlantic Ocean, Her Majesty's Ship "Hood", heading to London, UK, nowadays.
-
-You never liked moving. A lot of fuss, little action. But you managed to find a great job to delve into DevOps world in Foggy Albion.
-And you're not one to let minor difficulties ruin your plans.
-
-From your cabin window you hear the sound of the waves, the ship is peacefully rocking on them and you remember your favorite novel about the sea - "Moby Dick".
-Although the flow of the plot is far from straightforward, with many lyrical digressions and philosophical musings, you, like everyone else, associate this book primarily with Moby Dick himself - the white whale.
-
-"Hmm... White whale..." - here you remember that during the long journey you were going to work on docker.
-
-
-## Chapter II
 
 ### **nginx**
 
@@ -92,7 +72,7 @@ Docker Compose is used to simultaneously manage multiple containers that are par
 This tool offers the same features as Docker, but allows to work with more complex distributed applications, e.g. microservices.
 
 
-## Chapter III
+## Chapter II
 
 As a result of the work you should provide a report on the first two tasks. Each part of the task describe what should be added to the report once it has been completed. This can be answers to questions, screenshots, etc.
 
@@ -115,11 +95,6 @@ As a result of the sixth task you should provide a *docker-compose.yml* file and
 
 ## Part 1. Ready-made docker
 
-As the final goal of your little practice you have immediately chosen to write a docker image for your own web server, so first you need to deal with a ready-made docker image for the server.
-You chose a pretty simple **nginx**.
-
-**== Task ==**
-
 ##### Take the official docker image from **nginx** and download it using `docker pull`.
 ##### Check for the docker image with `docker images`
 ##### Run docker image with `docker run -d [image_id|repository]`
@@ -138,10 +113,6 @@ You chose a pretty simple **nginx**.
     - **nginx** start page at *localhost:80* (address must be shown).
 
 ## Part 2. Operations with container
-
-Docker image and container are ready. Now we can look into **nginx** configuration and display page status.
-
-**== Task ==**
 
 ##### Read the *nginx.conf* configuration file inside the docker image with the *exec* command
 ##### Create a *nginx.conf* file on a local machine
@@ -165,9 +136,6 @@ Docker image and container are ready. Now we can look into **nginx** configurati
 
 ## Part 3. Mini web server
 
-It's time to take a little break from the docker to prepare for the last stage. It's time to write your own server.
-
-**== Task ==**
 
 ##### Write a mini server in **C** and **FastCgi** that will return a simple page saying `Hello World!`
 ##### Run the written mini server via *spawn-fcgi* on port 8080
@@ -176,10 +144,6 @@ It's time to take a little break from the docker to prepare for the last stage. 
 ##### Put the *nginx.conf* file under *./nginx/nginx.conf* (you will need this later)
 
 ## Part 4. Your own docker
-
-Now everything is ready. You can start writing the docker image for the created server.
-
-**== Task ==**
 
 *When writing a docker image avoid multiple calls of RUN instructions*
 
@@ -200,20 +164,11 @@ _**nginx** can be installed inside the docker itself, or you can use a ready-mad
 
 ## Part 5. **Dockle**
 
-Once you've written the image, it's never a bad idea to check it for security.
-
-**== Task ==**
-
 ##### Check the image from the previous task with `dockle [image_id|repository]`
 ##### Fix the image so that there are no errors or warnings when checking with **dockle**
 
 
 ## Part 6. Basic **Docker Compose**
-
-There, you've finished your warm-up. Wait a minute though...
-Why not try experimenting with deploying a project consisting of several docker images at once?
-
-**== Task ==**
 
 ##### Write a *docker-compose.yml* file, using which:
 ##### 1) Start the docker container from [Part 5](#part-5-dockle) _(it must work on local network, i.e., you don't need to use **EXPOSE** instruction and map ports to local machine)_
