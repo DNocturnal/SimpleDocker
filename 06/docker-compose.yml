@@ -1,0 +1,14 @@
+#docker-compose.yml (Base)
+version: '3'
+
+services:
+  #6.1
+  fcgi:
+    build: ./05
+  #6.2
+  nginx:
+    build: ./server
+    depends_on:
+      - fcgi
+    ports:
+      - "80:8080"
